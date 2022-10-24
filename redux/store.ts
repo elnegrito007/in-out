@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
+import thunk from "redux-thunk";
+import { rootReducers } from "./reducers/rootReducer";
 
-// Import the previously created search slice
-import usersSlice from './slices/users-slice';
-
-// Create the store, adding the search slice to it
 export const store = configureStore({
-  reducer: {
-    search: usersSlice,
-  },
+    reducer: rootReducers,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: [thunk]
 });
 
-// Export some helper types used to improve type-checking
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+export default store
+
