@@ -6,6 +6,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { DoughnutChart } from "@/types/chart.type";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -24,8 +25,10 @@ const options: ChartOptions<"doughnut"> = {
   },
 };
 
-export default function BarChart() {
+export default function BarChart(props:DoughnutChart) {
   const labels = [3,4,5]
+
+  console.log(props.name);
 
   const data = {
     labels,
